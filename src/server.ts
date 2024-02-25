@@ -22,7 +22,7 @@ app.get('/healthy', (req, res) => {
 app.post('/roles', createRole)
 app.get('/roles', getRole)
 app.put('/roles/:id', updateRole)
-app.delete('/roles', deleteRole)
+app.delete('/roles/:id', deleteRole)
 
 
 
