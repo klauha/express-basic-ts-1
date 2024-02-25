@@ -3,18 +3,30 @@ import dotenv from "dotenv";
 dotenv.config()
 
 const app = express()
-const PORT= process.env.PORT || 4000
+const PORT = process.env.PORT || 4000
 
-// primera ruta
+// PRIMERA RUTA
 
-app.get('/healthy', (req,res)=> {
+app.get('/healthy', (req, res) => {
     res.status(200).json(
         {
-            success:true,
-            messagge:'Serves is healthy',
-    
+            success: true,
+            messagge: 'Serves is healthy',
+
         }
     )
+})
+
+//ROLES ROTES
+app.post('/roles', (req, res) => {
+    res.status(201).json(
+        {
+            succes: true,
+            message: 'Role created'
+        }
+
+    )
+
 })
 
 
