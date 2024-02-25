@@ -19,10 +19,14 @@ export const getRole = (req: Request, res: Response) => {
 }
 
 export const updateRole = (req:Request, res:Response) => {
+const roleid=req.params.id
+    // RECUPERAR PARAMETROS DE LA RUTA
+    console.log(req.params.id);
+    
     res.status(200).json(
         {
             success:true,
-            message: 'Role updated'
+            message: `Role with id ${roleid} updated`
         }
     )
 }

@@ -21,7 +21,7 @@ app.get('/healthy', (req, res) => {
 //ROLES ROTES
 app.post('/roles', createRole)
 app.get('/roles', getRole)
-app.put('/roles', updateRole)
+app.put('/roles/:id', updateRole)
 app.delete('/roles', deleteRole)
 
 
