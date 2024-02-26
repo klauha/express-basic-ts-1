@@ -1,38 +1,32 @@
-import express from "express";
 import dotenv from "dotenv";
-import { createRole, deleteRole, getRole, updateRole } from "./controllers/roleControllers";
-dotenv.config()
+import { app } from "./app"
+import { AppDataSource } from "./database/db";
 
-const app = express()
 const PORT = process.env.PORT || 4000
 
-// PRIMERA RUTA
-
-app.get('/healthy', (req, res) => {
-    res.status(200).json(
-        {
-            success: true,
-            messagge: 'Serves is healthy',
-
-        }
-    )
-})
-
-//ROLES ROTES
-app.post('/roles', createRole)
-app.get('/roles', getRole)
-app.put('/roles/:id', updateRole)
-app.delete('/roles/:id', deleteRole)
-
-
-
-
-
-
+const startServer = ()=> {
 
 app.listen(PORT, () => {
     console.log(`server ${PORT} is running`);
-
-
 })
+
+}
+
+
+// funcion comrueba conexion base de datos
+AppDataSource.initialize ()
+.then(()=> {
+    console.log ('Database connected');
+    app.listen(PORT, () => {
+        console.log(`server ${PORT} is running`);
+    })
+    
+    })
+    
+.catch (error => {console.log(error)})
+
+// startServer()
+
+
+
 
